@@ -1,59 +1,103 @@
-# TeacherAuthApp
+ STUDENT ASSESSMENT TRACKING SYSTEM (Angular 19)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.14.
+This Angular 19 application is the frontend for a Student Assessment & Progress Tracking System.
+It connects to a Django REST API backend using JWT-based authentication.
 
-## Development server
+==================================================
+FEATURES IMPLEMENTED IN ANGULAR
+==================================================
 
-To start a local development server, run:
+1. USER AUTHENTICATION
+- Teacher Registration and Login using JWT Tokens
+- Token stored in localStorage for session management
+- After login, teachers can access the dashboard
 
-```bash
-ng serve
-```
+2. STUDENT MANAGEMENT
+- Add / Edit / Delete Students
+- Assign class and section to each student
+- View students with:
+-> Pagination
+-> Class & Section filters
+- Display students in a styled table using SCSS
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+3. ASSESSMENT MODULE
+- Create assessments (Title, Chapter, Week, Total Marks)
+- Assign marks to students for a selected assessment
+- View all created assessments
+- Edit and delete assessments
 
-## Code scaffolding
+4. WEEKLY PROGRESS TRACKING
+- Show student-wise scorecard (weekly)
+- Displayed using Bar Chart (ng2-charts)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
-```
+5. REPORTING MODULE
+- Shows all assessments taken by a student
+- Displays total marks, marks obtained, and percentage
+- Summarized report for a student
+- Styled using SCSS
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+6. ADMIN PANEL (Handled in Angular via Teacher Dashboard)
+- No separate admin login, teacher acts as admin
+- Admin/Teacher can:
+-> View list of all teachers (from /api/users/?role=teacher)
+-> View all students and perform CRUD operations
+-> Manage assessments and scores
+-> View progress reports
 
-```bash
-ng generate --help
-```
+7. ROUTING AND DASHBOARD NAVIGATION
+- Teacher Dashboard with navigation to:
+-> Student Management
+-> Assessments
+-> Scores
+-> Progress
+-> Reports
+-> Logout
 
-## Building
+8. STYLING
+- Each component styled using SCSS
+- Responsive design using CSS Grid and Flexbox
+- Charts are responsive and fit card layouts
 
-To build the project run:
+10. LOGOUT FUNCTIONALITY
+- Clears JWT token
+- Navigates to login page
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+==================================================
+SAMPLE ROUTES
+==================================================
 
-## Running unit tests
+- /register → Teacher Registration
+- /login → Teacher Login
+- /dashboard → Main dashboard after login
+- /students → List/Add/Edit/Delete Students
+- /assessments → Create/View/Edit/Delete Assessments
+- /scores → Submit student marks
+- /progress/:id → View weekly performance of a student
+- /report/:id → View detailed report with percentages
+- /teachers → View all teachers
+- /logout → Clear session and redirect to login
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
-```bash
-ng test
-```
+==================================================
+MODULES AND LIBRARIES USED
+==================================================
 
-## Running end-to-end tests
+- Angular 19 (Standalone Components)
+- Angular Router
+- Angular Forms
+- ng2-charts (Bar Chart)
+- JWT Token Interceptor for Authorization
+- SCSS for Component Styling
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+==================================================
+IMPORTANT NOTES
+==================================================
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Backend API built with Django handles role-based data
+- Only teacher login is implemented in Angular (no separate admin login)
+- Admin operations (viewing teachers, students, scores) are available in dashboard
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project demonstrates Angular frontend integration with a Django REST API backend, complete with authentication, CRUD, pagination, charts, and user role-based dashboard functionality.
