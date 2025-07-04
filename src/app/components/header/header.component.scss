@@ -1,0 +1,45 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.header img {
+  width: 60px;
+  height: auto;
+}
+.nav-tabs {
+  display: flex;
+  align-items:center;
+  gap: 20px;
+  list-style: none;
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
+}
+.nav-tabs a {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #333;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+.login-button{
+    background-color: blanchedalmond !important;
+    padding:6px 10px
+}
+.signup-button{
+    background-color: brown !important;
+    color:white !important;
+    padding:6px 10px
+}

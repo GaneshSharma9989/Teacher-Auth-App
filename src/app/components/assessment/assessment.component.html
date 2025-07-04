@@ -1,0 +1,109 @@
+<app-header></app-header>
+<h2>Create Assessment</h2>
+<div>
+  <label>Title:</label>
+  <input [(ngModel)]="newAssessment.title" />
+</div>
+<div>
+  <label>Chapter:</label>
+  <input [(ngModel)]="newAssessment.chapter" />
+</div>
+<div>
+  <label>Week:</label>
+  <input type="number" [(ngModel)]="newAssessment.week" />
+</div>
+<div>
+  <label>Total Marks:</label>
+  <input type="number" [(ngModel)]="newAssessment.total_marks" />
+</div>
+<button (click)="createAssessment()">Create</button>
+
+<hr />
+
+<h2>Submit Score</h2>
+<div>
+  <label>Student ID:</label>
+  <input type="number" [(ngModel)]="studentId" />
+</div>
+
+<div>
+  <label>Assessment:</label>
+  <select [(ngModel)]="selectedAssessment">
+    <option *ngFor="let a of assessments" [value]="a.id">
+      {{ a.title }} ({{ a.chapter }})
+    </option>
+  </select>
+</div>
+
+<div>
+  <label>Marks:</label>
+  <input type="number" [(ngModel)]="marks" />
+</div>
+<button (click)="submitScore()">Submit Score</button>
+
+<hr />
+
+<div *ngIf="editMode">
+  <h2>Edit Assessment</h2>
+  <div>
+    <label>Title:</label>
+    <input [(ngModel)]="editableAssessment.title" />
+  </div>
+  <div>
+    <label>Chapter:</label>
+    <input [(ngModel)]="editableAssessment.chapter" />
+  </div>
+  <div>
+    <label>Week:</label>
+    <input type="number" [(ngModel)]="editableAssessment.week" />
+  </div>
+  <div>
+    <label>Total Marks:</label>
+    <input type="number" [(ngModel)]="editableAssessment.total_marks" />
+  </div>
+  <button (click)="updateAssessment()">Update</button>
+  <button (click)="cancelEdit()">Cancel</button>
+</div>
+
+<hr />
+
+<h2>All Assessments</h2>
+<ul>
+  <li *ngFor="let a of assessments">
+    <strong>{{ a.title }}</strong> - {{ a.chapter }} (Week {{ a.week }}) — {{ a.total_marks }} marks
+    <button (click)="editAssessment(a)">Edit</button>
+    <button (click)="deleteAssessment(a.id)">Delete</button>
+  </li>
+</ul>
+
+<hr />
+
+<h2>Progress</h2>
+<ul>
+  <li *ngFor="let p of progress">
+    Week {{ p.assessment__week }}: {{ p.assessment__title }} ({{ p.assessment__chapter }}) —
+    Marks: {{ p.marks }}/{{ p.assessment__total_marks }}
+  </li>
+</ul>
+
+<hr />
+
+<h2>Report</h2>
+<div *ngIf="report">
+  <h3>{{ report.student }}</h3>
+  <p>
+    Total: {{ report.total_marks_obtained }} / {{ report.total_marks_possible }}
+    ({{ report.overall_percentage }}%)
+  </p>
+
+  <ul>
+    <li *ngFor="let r of report.report">
+      {{ r.assessment }} ({{ r.chapter }}, Week {{ r.week }}):
+      {{ r.marks_obtained }}/{{ r.total_marks }} – {{ r.percentage }}%
+    </li>
+  </ul>
+</div>
+
+<hr />
+
+ 

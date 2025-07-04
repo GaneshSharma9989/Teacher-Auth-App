@@ -1,0 +1,15 @@
+<div class="register-box">
+  <h2>Register</h2>
+  <form (ngSubmit)="register()">
+    <input type="text" placeholder="Username" [(ngModel)]="username" name="username" required />
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+    <button type="submit">Register</button>
+    <p style="text-align: center;">
+    Already Have An Account?
+     <a [routerLink]="['/auth/login']"class="home-button" ngbNavLink>Login</a>
+  </p>
+  </form>
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</div>
